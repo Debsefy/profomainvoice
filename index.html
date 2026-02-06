@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice</title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<button class="btn" onclick="window.print()">🖨 Print Invoice</button>
+
+<div class="top">
+  <div class="logo">+ Add Your Logo</div>
+
+  <div class="invoice-title">
+
+    <h1>INVOICE</h1>
+    <input placeholder="Invoice #">
+  </div>
+</div>
+
+<div class="grid">
+  <div>
+    <input placeholder="Your Business Name">
+  </div>
+
+  <div class="right-grid">
+    <input placeholder="Date">
+    <input placeholder="Payment Terms">
+    <input placeholder="Due Date">
+    <input placeholder="PO Number">
+  </div>
+</div>
+
+<div class="grid">
+  <div>
+
+    <strong>Bill To</strong>
+    <input placeholder="Customer Name">
+  </div>
+
+  <div>
+    <strong>Ship To</strong>
+    <input placeholder="Shipping Address">
+  </div>
+</div>
+
+<!-- Currency -->
+<div style="margin-top:20px; width:200px;">
+  <strong>Currency</strong>
+  <select id="currency" onchange="updateCurrency()">
+    <option value="$">$ USD</option>
+    <option value="₦">₦ NGN</option>
+    <option value="€">€ EUR</option>
+    <option value="£">£ GBP</option>
+  </select>
+</div>
+
+
+<table id="itemsTable">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th width="80">Qty</th>
+      <th width="120">Rate</th>
+      <th width="140">Amount</th>
+      <th width="40"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input placeholder="Description of item/service"></td>
+      <td><input type="number"></td>
+      <td><input type="number"></td>
+      <td>
+        <span class="currency">$</span>
+        <input type="number" class="amount" value="0" oninput="calculateTotals()">
+
+      </td>
+      <td class="remove" onclick="removeRow(this)">✕</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn green" onclick="addRow()">+ Line Item</button>
+
+<div class="summary">
+<table>
+  <tr>
+    <td>Subtotal</td>
+    <td><span class="currency">$</span><span id="subtotal">0.00</span></td>
+  </tr>
+  <tr>
+    <td>Tax</td>
+    <td><input type="number" id="tax" 
+
+value="0" oninput="calculateTotals()"></td>
+  </tr>
+  <tr>
+    <td>Discount</td>
+    <td><input type="number" id="discount" value="0" oninput="calculateTotals()"></td>
+  </tr>
+  <tr>
+    <td>Shipping</td>
+    <td><input type="number" id="shipping" value="0" oninput="calculateTotals()"></td>
+  </tr>
+  <tr>
+    <th>Total</th>
+    <th><span class="currency">$</span><span id="total">0.00</span></th>
+  </tr>
+</table>
+</div>
+
+<div class="notes">
+
+  <strong>Notes</strong>
+  <textarea placeholder="Notes – any relevant information"></textarea>
+</div>
+
+<div class="notes">
+  <strong>Terms</strong>
+  <textarea placeholder="Terms and conditions"></textarea>
+</div>
+
+</div>
+
+
+</body>
+</html>
