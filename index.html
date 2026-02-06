@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Invoice</title>
-<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -14,10 +13,15 @@
 <button class="btn" onclick="window.print()">🖨 Print Invoice</button>
 
 <div class="top">
-  <div class="logo">+ Add Your Logo</div>
+  <!-- LOGO UPLOAD -->
+
+  <div class="logo-box" onclick="document.getElementById('logoInput').click()">
+    <span>+ Add Your Logo</span>
+    <img id="logoPreview">
+    <input type="file" id="logoInput" accept="image/*" hidden>
+  </div>
 
   <div class="invoice-title">
-
     <h1>INVOICE</h1>
     <input placeholder="Invoice #">
   </div>
@@ -38,7 +42,6 @@
 
 <div class="grid">
   <div>
-
     <strong>Bill To</strong>
     <input placeholder="Customer Name">
   </div>
@@ -49,8 +52,8 @@
   </div>
 </div>
 
-<!-- Currency -->
 <div style="margin-top:20px; width:200px;">
+
   <strong>Currency</strong>
   <select id="currency" onchange="updateCurrency()">
     <option value="$">$ USD</option>
@@ -59,7 +62,6 @@
     <option value="£">£ GBP</option>
   </select>
 </div>
-
 
 <table id="itemsTable">
   <thead>
@@ -72,6 +74,7 @@
     </tr>
   </thead>
   <tbody>
+
     <tr>
       <td><input placeholder="Description of item/service"></td>
       <td><input type="number"></td>
@@ -79,7 +82,6 @@
       <td>
         <span class="currency">$</span>
         <input type="number" class="amount" value="0" oninput="calculateTotals()">
-
       </td>
       <td class="remove" onclick="removeRow(this)">✕</td>
     </tr>
@@ -90,15 +92,14 @@
 
 <div class="summary">
 <table>
+
   <tr>
     <td>Subtotal</td>
     <td><span class="currency">$</span><span id="subtotal">0.00</span></td>
   </tr>
   <tr>
     <td>Tax</td>
-    <td><input type="number" id="tax" 
-
-value="0" oninput="calculateTotals()"></td>
+    <td><input type="number" id="tax" value="0" oninput="calculateTotals()"></td>
   </tr>
   <tr>
     <td>Discount</td>
@@ -108,6 +109,7 @@ value="0" oninput="calculateTotals()"></td>
     <td>Shipping</td>
     <td><input type="number" id="shipping" value="0" oninput="calculateTotals()"></td>
   </tr>
+
   <tr>
     <th>Total</th>
     <th><span class="currency">$</span><span id="total">0.00</span></th>
@@ -116,7 +118,6 @@ value="0" oninput="calculateTotals()"></td>
 </div>
 
 <div class="notes">
-
   <strong>Notes</strong>
   <textarea placeholder="Notes – any relevant information"></textarea>
 </div>
@@ -127,7 +128,8 @@ value="0" oninput="calculateTotals()"></td>
 </div>
 
 </div>
-<script src="my.js"></script>
+
+
 
 </body>
 </html>
